@@ -59,59 +59,14 @@ const Icons = {
 
 // --- Data ---
 const PRODUCTS: Product[] = [
-  { 
-    id: 1, 
-    title: "Madagascar Vanilla", 
-    tagline: "The Floral One", 
-    price: 8.5, 
-    color: "bg-[#B5CFB7]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-33-13-Ultra-high-2319986849.png", 
-    description: "The classic smoothness of artisanal oat milk with hand-crunched Madagascar vanilla beans." 
-  },
-  { 
-    id: 2, 
-    title: "Sun-Kissed Peach", 
-    tagline: "The Summer One", 
-    price: 9.0, 
-    color: "bg-[#E8A87C]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-36-40-Ultra-high-2239083568.png", 
-    description: "Botanical earthiness with a hint of morning dew and sun-ripened peach." 
-  },
-  { 
-    id: 3, 
-    title: "Midnight Acai", 
-    tagline: "The Power One", 
-    price: 10.0, 
-    color: "bg-[#2D3A27]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-38-22-Ultra-high-2341466183.png", 
-    description: "Rich Amazonian acai berry infusion for a deep, purple swirl." 
-  },
-  { 
-    id: 4, 
-    title: "Tropical Mango", 
-    tagline: "The Exotic One", 
-    price: 9.0, 
-    color: "bg-[#F8F2ED]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-40-29-Ultra-high-4282544012.png", 
-    description: "Sun-drenched Alphonso mangoes with a touch of lime zest." 
-  },
-  { 
-    id: 5, 
-    title: "Pistachio Dream", 
-    tagline: "The Nutty One", 
-    price: 11.0, 
-    color: "bg-[#B5CFB7]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-42-27-Ultra-high-1605432680.png", 
-    description: "Roasted Sicilian pistachios with a hint of sea salt." 
-  },
-  { 
-    id: 6, 
-    title: "Midnight Cacao", 
-    tagline: "The Dark One", 
-    price: 9.5, 
-    color: "bg-[#F8F2ED]", 
-    image: "https://raw.githubusercontent.com/Fvik8/Velo/main/public/TA-2026-04-29-11-44-15-Ultra-high-1164063228.png", 
-    description: "Deep, dark, and mysteriously velvety artisanal chocolate." 
+  { id: 1, title: "Madagascar Vanilla", tagline: "The Floral One", price: 8.5, color: "bg-[#B5CFB7]", image: "1.png", description: "The classic smoothness of artisanal oat milk." },
+  { id: 2, title: "Sun-Kissed Peach", tagline: "The Summer One", price: 9.0, color: "bg-[#E8A87C]", image: "2.png", description: "Botanical earthiness with sun-ripened peach." },
+  { id: 3, title: "Midnight Acai", tagline: "The Power One", price: 10.0, color: "bg-[#2D3A27]", image: "3.png", description: "Rich Amazonian acai berry infusion." },
+  { id: 4, title: "Tropical Mango", tagline: "The Exotic One", price: 9.0, color: "bg-[#F8F2ED]", image: "4.png", description: "Sun-drenched Alphonso mangoes." },
+  { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "5.png", description: "Roasted Sicilian pistachios." },
+  { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "6.png", description: "Deep and mysteriously velvety chocolate." }
+];
+
   }
 ];
 
