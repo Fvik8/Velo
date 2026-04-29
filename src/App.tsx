@@ -59,16 +59,14 @@ const Icons = {
 
 // --- Data ---
 const PRODUCTS: Product[] = [
-  { id: 1, title: "Madagascar Vanilla", tagline: "The Floral One", price: 8.5, color: "bg-[#B5CFB7]", image: "1.png", description: "The classic smoothness of artisanal oat milk." },
-  { id: 2, title: "Sun-Kissed Peach", tagline: "The Summer One", price: 9.0, color: "bg-[#E8A87C]", image: "2.png", description: "Botanical earthiness with sun-ripened peach." },
-  { id: 3, title: "Midnight Acai", tagline: "The Power One", price: 10.0, color: "bg-[#2D3A27]", image: "3.png", description: "Rich Amazonian acai berry infusion." },
-  { id: 4, title: "Tropical Mango", tagline: "The Exotic One", price: 9.0, color: "bg-[#F8F2ED]", image: "4.png", description: "Sun-drenched Alphonso mangoes." },
-  { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "5.png", description: "Roasted Sicilian pistachios." },
-  { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "6.png", description: "Deep and mysteriously velvety chocolate." }
+  { id: 1, title: "Madagascar Vanilla", tagline: "The Floral One", price: 8.5, color: "bg-[#B5CFB7]", image: "/1.png", description: "The classic smoothness of artisanal oat milk." },
+  { id: 2, title: "Sun-Kissed Peach", tagline: "The Summer One", price: 9.0, color: "bg-[#E8A87C]", image: "/2.png", description: "Botanical earthiness with sun-ripened peach." },
+  { id: 3, title: "Midnight Acai", tagline: "The Power One", price: 10.0, color: "bg-[#2D3A27]", image: "/3.png", description: "Rich Amazonian acai berry infusion." },
+  { id: 4, title: "Tropical Mango", tagline: "The Exotic One", price: 9.0, color: "bg-[#F8F2ED]", image: "/4.png", description: "Sun-drenched Alphonso mangoes." },
+  { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "/5.png", description: "Roasted Sicilian pistachios." },
+  { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "/6.png", description: "Deep and mysteriously velvety chocolate." }
 ];
 
-  }
-];
 
 
 
