@@ -1,5 +1,5 @@
-'import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 
 // --- Types ---
 interface Product {
@@ -22,7 +22,7 @@ interface Recipe {
   time: string;
   difficulty: string;
   image: string;
-\ ingredients: string[];
+  ingredients: string[];
   method: string[];
 }
 
@@ -66,12 +66,6 @@ const PRODUCTS: Product[] = [
   { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "/5.png", description: "Roasted Sicilian pistachios." },
   { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "/6.png", description: "Deep and mysteriously velvety chocolate." }
 ];
-
-
-
-
-
-
 
 const RECIPES: Recipe[] = [
   {
@@ -291,7 +285,7 @@ export default function App() {
               </button>
             </div>
             <div className="mt-16 space-y-10">
-              {['Chelsea Market Gardon, NY', 'Harrods Food Hall, London'].map((loc, i) => (
+              {['Chelsea Market Garden, NY', 'Harrods Food Hall, London'].map((loc, i) => (
                 <div key={i} className="flex gap-6 items-center">
                   <div className={`w-14 h-14 rounded-full flex items-center justify-center ${i === 0 ? 'bg-[#E8A87C]/20 text-[#E8A87C]' : 'bg-[#B5CFB7]/20 text-[#B5CFB7]'}`}>
                     <Icons.MapPin />
