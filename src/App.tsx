@@ -59,12 +59,12 @@ const Icons = {
 
 // --- Data ---
 const PRODUCTS: Product[] = [
-  { id: 1, title: "Madagascar Vanilla", tagline: "The Floral One", price: 8.5, color: "bg-[#B5CFB7]", image: "https://images.unsplash.com/photo-1516559174662-821197701e63?q=80&w=1000&auto=format&fit=crop", description: "The classic smoothness of artisanal oat milk with hand-crunched honeycomb." },
-  { id: 2, title: "Sun-Kissed Peach", tagline: "The Summer One", price: 9.0, color: "bg-[#E8A87C]", image: "https://images.unsplash.com/photo-1515516089376-88db1e26e9c0?q=80&w=1000&auto=format&fit=crop", description: "Botanical earthiness with a hint of morning dew and sun-ripened peaches." },
-  { id: 3, title: "Midnight Acai", tagline: "The Power One", price: 10.0, color: "bg-[#2D3A27]", image: "https://images.unsplash.com/photo-1579954115545-a95591f28be0?q=80&w=1000&auto=format&fit=crop", description: "Rich Amazonian acai berry infusion for a deep, purple swirl." },
-  { id: 4, title: "Tropical Mango", tagline: "The Exotic One", price: 9.0, color: "bg-[#F8F2ED]", image: "https://images.unsplash.com/photo-1591154706825-43cbc20256ee?q=80&w=1000&auto=format&fit=crop", description: "Sun-drenched Alphonso mangoes with a touch of lime zest." },
-  { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=1000&auto=format&fit=crop", description: "Roasted Sicilian pistachios with a hint of sea salt." },
-  { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop", description: "Deep, dark, and mysteriously velvety artisanal chocolate." },
+  { id: 1, title: "Madagascar Vanilla", tagline: "The Floral One", price: 8.5, color: "bg-[#B5CFB7]", image: "/regenerated_image_1777462489616.png", description: "The classic smoothness of artisanal oat milk with hand-crunched honeycomb." },
+  { id: 2, title: "Sun-Kissed Peach", tagline: "The Summer One", price: 9.0, color: "bg-[#E8A87C]", image: "/regenerated_image_1777463238379.png", description: "Botanical earthiness with a hint of morning dew and sun-ripened peaches." },
+  { id: 3, title: "Midnight Acai", tagline: "The Power One", price: 10.0, color: "bg-[#2D3A27]", image: "/regenerated_image_1777463242983.png", description: "Rich Amazonian acai berry infusion for a deep, purple swirl." },
+  { id: 4, title: "Tropical Mango", tagline: "The Exotic One", price: 9.0, color: "bg-[#F8F2ED]", image: "/regenerated_image_1777463248759.png", description: "Sun-drenched Alphonso mangoes with a touch of lime zest." },
+  { id: 5, title: "Pistachio Dream", tagline: "The Nutty One", price: 11.0, color: "bg-[#B5CFB7]", image: "/regenerated_image_1777463255457.png", description: "Roasted Sicilian pistachios with a hint of sea salt." },
+  { id: 6, title: "Midnight Cacao", tagline: "The Dark One", price: 9.5, color: "bg-[#F8F2ED]", image: "/regenerated_image_1777463265911.png", description: "Deep, dark, and mysteriously velvety artisanal chocolate." },
 ];
 
 const RECIPES: Recipe[] = [
