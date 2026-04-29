@@ -397,7 +397,7 @@ export default function App() {
               <a href="#" className="hover:opacity-100 transition-opacity">Pinterest</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Behance</a>
             </div>
-            <div className="text-center font-black">© 2024 Velo Botanicals. Cultivated Perfection.</div>
+            <div className="text-center font-black">© 2026 Velo Botanicals. Cultivated Perfection.</div>
             <div className="flex gap-10">
               <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Ritual Terms</a>
