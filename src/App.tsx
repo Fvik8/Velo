@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 
 // --- Types ---
 interface Product {
@@ -19,6 +19,7 @@ interface CartItem extends Product {
 interface Recipe {
   id: number;
   title: string;
+  type: string;
   time: string;
   difficulty: string;
   image: string;
@@ -69,16 +70,28 @@ const PRODUCTS: Product[] = [
 
 const RECIPES: Recipe[] = [
   {
-    id: 1, title: "Sage & Honey Granola", time: "20 min", difficulty: "Easy",
+    id: 1, title: "Sage & Honey Granola", type: "Breakfast Ritual", time: "20 min", difficulty: "Easy",
     image: "https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?q=80&w=1000&auto=format&fit=crop",
     ingredients: ["1 cup VELO Vanilla", "2 cups Rolled Oats", "1/2 cup Wildflower Honey", "Fresh Sage", "Maldon Sea Salt"],
     method: ["Toast oats until nutty.", "Infuse honey with sage.", "Combine and freeze into chunks.", "Serve over VELO."]
   },
   {
-    id: 2, title: "Botanical Berry Compote", time: "15 min", difficulty: "Medium",
+    id: 2, title: "Botanical Berry Compote", type: "Afternoon Refresh", time: "15 min", difficulty: "Medium",
     image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1000&auto=format&fit=crop",
     ingredients: ["VELO Peach", "250g Mixed Berries", "Rosemary", "Balsamic Splash", "30g Sugar"],
     method: ["Simmer berries with rosemary and sugar.", "Add balsamic for depth.", "Cool and drizzle over peach base."]
+  },
+  {
+    id: 3, title: "Acai Energy Bowl", type: "Power Punch", time: "10 min", difficulty: "Easy",
+    image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1000&auto=format&fit=crop",
+    ingredients: ["VELO Midnight Acai", "Banana", "Hemp Seeds", "Nut Butter", "Goji Berries"],
+    method: ["Sling acai base into a bowl.", "Layer with sliced banana and seeds.", "Finish with a generous dollop of nut butter."]
+  },
+  {
+    id: 4, title: "Cacao Hazelnut Crunch", type: "Midnight Indulgence", time: "25 min", difficulty: "Hard",
+    image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=1000&auto=format&fit=crop",
+    ingredients: ["VELO Midnight Cacao", "Roasted Hazelnuts", "Dark Chocolate Shavings", "Sea Salt Caramel"],
+    method: ["Crush hazelnuts and melt chocolate.", "Create a tempered chocolate disc.", "Sandwich caramel between cacao froyo and chocolate."]
   }
 ];
 
@@ -121,13 +134,17 @@ export default function App() {
   };
 
   const updateQuantity = (id: number, delta: number) => {
-    setCart(prev => prev.map(item => {
-      if (item.id === id) {
-        const newQty = Math.max(1, item.quantity + delta);
-        return { ...item, quantity: newQty };
-      }
-      return item;
-    }));
+    setCart(prev => {
+      return prev
+        .map(item => {
+          if (item.id === id) {
+            const newQty = item.quantity + delta;
+            return newQty > 0 ? { ...item, quantity: newQty } : null;
+          }
+          return item;
+        })
+        .filter((item): item is CartItem => item !== null);
+    });
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -217,21 +234,31 @@ export default function App() {
             <h2 className="text-6xl italic mt-4 font-serif">Seasonal Swirls</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PRODUCTS.map(product => (
-            <motion.div key={product.id} whileHover={{ y: -10 }} className={`${product.color} rounded-[40px] p-10 flex flex-col justify-between aspect-[1/1.2] relative group overflow-hidden border border-black/5`}>
-              <div className="relative z-10">
-                <h3 className="text-4xl font-bold mb-1">{product.title}</h3>
-                <p className="text-xs font-black uppercase tracking-widest opacity-40">{product.tagline}</p>
-              </div>
-              <img src={product.image} className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" alt={product.title} />
-              <div className="relative z-10 flex justify-between items-end">
-                <div className="text-2xl font-serif italic">${product.price.toFixed(2)}</div>
-                <button onClick={() => addToCart(product)} className="w-14 h-14 bg-[#2D3A27] text-[#F8F2ED] rounded-full flex items-center justify-center hover:bg-[#E8A87C] transition-all transform active:scale-90 cursor-pointer">
-                  <Icons.Plus />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+          {PRODUCTS.map(product => {
+            const isDark = product.color === "bg-[#2D3A27]";
+            return (
+              <motion.div key={product.id} whileHover={{ y: -10 }} className={`${product.color} ${isDark ? 'text-[#F8F2ED]' : 'text-[#2D3A27]'} rounded-[40px] p-10 flex flex-col justify-between aspect-[1/1.2] relative group overflow-hidden border border-black/5`}>
+                <div className="relative z-10">
+                  <h3 className="text-4xl font-bold mb-1">{product.title}</h3>
+                  <p className={`text-xs font-black uppercase tracking-widest ${isDark ? 'opacity-60' : 'opacity-40'}`}>{product.tagline}</p>
+                </div>
+                <img 
+                  src={product.image} 
+                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${isDark ? 'opacity-40 brightness-110' : 'opacity-30 mix-blend-multiply'}`} 
+                  alt={product.title} 
+                />
+                <div className="relative z-10 flex justify-between items-end">
+                  <div className="text-2xl font-serif italic">${product.price.toFixed(2)}</div>
+                  <button 
+                    onClick={() => addToCart(product)} 
+                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all transform active:scale-90 cursor-pointer ${isDark ? 'bg-[#F8F2ED] text-[#2D3A27] hover:bg-[#E8A87C] hover:text-[#F8F2ED]' : 'bg-[#2D3A27] text-[#F8F2ED] hover:bg-[#E8A87C]'}`}
+                  >
+                    <Icons.Plus />
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -251,6 +278,9 @@ export default function App() {
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
+                    <span className="text-[9px] uppercase font-black tracking-[0.3em] text-[#E8A87C] bg-[#E8A87C]/10 px-3 py-1 rounded-full mb-3 inline-block">
+                      {recipe.type}
+                    </span>
                     <h3 className="text-3xl font-bold mb-2">{recipe.title}</h3>
                     <div className="flex gap-4 text-xs font-black uppercase tracking-widest opacity-40">
                       <span>{recipe.time}</span>
@@ -322,26 +352,38 @@ export default function App() {
                     <Icons.ShoppingBag />
                     <p className="text-xs uppercase tracking-[0.4em] font-black text-center">Your journey is empty.</p>
                   </div>
-                ) : cart.map(item => (
-                  <div key={item.id} className="flex gap-6 items-center">
-                    <div className={`w-24 h-24 rounded-3xl ${item.color} overflow-hidden shadow-inner flex-shrink-0`}>
-                      <img src={item.image} className="w-full h-full object-cover mix-blend-multiply opacity-50" alt={item.title} />
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
-                      <p className="text-[10px] uppercase font-black tracking-widest opacity-40 mb-3">{item.tagline}</p>
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-3 border border-black/10 px-3 py-1 rounded-full">
-                          <button onClick={() => updateQuantity(item.id, -1)} className="hover:text-[#E8A87C]"><Icons.Minus /></button>
-                          <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
-                          <button onClick={() => updateQuantity(item.id, 1)} className="hover:text-[#E8A87C]"><Icons.Plus /></button>
-                        </div>
-                        <button onClick={() => removeFromCart(item.id)} className="text-[#E8A87C] text-[10px] font-black uppercase tracking-widest border-b border-transparent hover:border-[#E8A87C] transition-all">Remove</button>
+                ) : cart.map(item => {
+                  const isDark = item.color === "bg-[#2D3A27]";
+                  return (
+                    <div key={item.id} className="flex gap-6 items-center">
+                      <div className={`w-24 h-24 rounded-3xl ${item.color} overflow-hidden shadow-inner flex-shrink-0`}>
+                        <img 
+                          src={item.image} 
+                          className={`w-full h-full object-cover ${isDark ? 'opacity-70 brightness-125' : 'mix-blend-multiply opacity-50'}`} 
+                          alt={item.title} 
+                        />
                       </div>
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
+                        <p className="text-[10px] uppercase font-black tracking-widest opacity-40 mb-3">{item.tagline}</p>
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-3 border border-black/10 px-3 py-1 rounded-full">
+                            <button onClick={() => updateQuantity(item.id, -1)} className="hover:text-[#E8A87C]"><Icons.Minus /></button>
+                            <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
+                            <button onClick={() => updateQuantity(item.id, 1)} className="hover:text-[#E8A87C]"><Icons.Plus /></button>
+                          </div>
+                          <button 
+                            onClick={() => removeFromCart(item.id)} 
+                            className="text-[#E8A87C] text-[10px] font-black uppercase tracking-widest border-b border-[#E8A87C]/20 hover:border-[#E8A87C] transition-all cursor-pointer py-1"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                      <div className="text-lg font-serif italic whitespace-nowrap">${(item.price * item.quantity).toFixed(2)}</div>
                     </div>
-                    <div className="text-lg font-serif italic whitespace-nowrap">${(item.price * item.quantity).toFixed(2)}</div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               <div className="pt-12 border-t border-black/5 mt-12 gap-6 flex flex-col">
                 <div className="flex justify-between items-center text-xs font-black uppercase tracking-widest">
