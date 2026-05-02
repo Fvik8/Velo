@@ -71,25 +71,25 @@ const PRODUCTS: Product[] = [
 const RECIPES: Recipe[] = [
   {
     id: 1, title: "Sage & Honey Granola", type: "Breakfast Ritual", time: "20 min", difficulty: "Easy",
-    image: "https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?q=80&w=1000&auto=format&fit=crop",
+    image: "/Sage%20%26%20Honey%20Granola__.png",
     ingredients: ["1 cup VELO Vanilla", "2 cups Rolled Oats", "1/2 cup Wildflower Honey", "Fresh Sage", "Maldon Sea Salt"],
     method: ["Toast oats until nutty.", "Infuse honey with sage.", "Combine and freeze into chunks.", "Serve over VELO."]
   },
   {
     id: 2, title: "Botanical Berry Compote", type: "Afternoon Refresh", time: "15 min", difficulty: "Medium",
-    image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1000&auto=format&fit=crop",
+    image: "/Botanical%20Berry%20Compote__.png",
     ingredients: ["VELO Peach", "250g Mixed Berries", "Rosemary", "Balsamic Splash", "30g Sugar"],
     method: ["Simmer berries with rosemary and sugar.", "Add balsamic for depth.", "Cool and drizzle over peach base."]
   },
   {
     id: 3, title: "Acai Energy Bowl", type: "Power Punch", time: "10 min", difficulty: "Easy",
-    image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1000&auto=format&fit=crop",
+    image: "/Acai%20Energy%20Bowl_.png",
     ingredients: ["VELO Midnight Acai", "Banana", "Hemp Seeds", "Nut Butter", "Goji Berries"],
     method: ["Sling acai base into a bowl.", "Layer with sliced banana and seeds.", "Finish with a generous dollop of nut butter."]
   },
   {
     id: 4, title: "Cacao Hazelnut Crunch", type: "Midnight Indulgence", time: "25 min", difficulty: "Hard",
-    image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=1000&auto=format&fit=crop",
+    image: "/Cacao%20Hazelnut%20Crunch__.png",
     ingredients: ["VELO Midnight Cacao", "Roasted Hazelnuts", "Dark Chocolate Shavings", "Sea Salt Caramel"],
     method: ["Crush hazelnuts and melt chocolate.", "Create a tempered chocolate disc.", "Sandwich caramel between cacao froyo and chocolate."]
   }
