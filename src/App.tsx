@@ -159,7 +159,8 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#F8F2ED] text-[#2D3A27] font-sans selection:bg-[#E8A87C] selection:text-[#F8F2ED]">
+    /* ФИКС: Добавено overflow-x-hidden тук, за да спрем бялата лента вдясно */
+    <div className="bg-[#F8F2ED] text-[#2D3A27] font-sans selection:bg-[#E8A87C] selection:text-[#F8F2ED] overflow-x-hidden min-h-screen">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#2D3A27] z-[100] origin-left" style={{ scaleX }} />
 
       {/* Navigation */}
@@ -263,11 +264,11 @@ export default function App() {
       </section>
 
       {/* Recipes Section */}
-      <section id="recipes" className="bg-[#2D3A27] text-[#F8F2ED] py-32 rounded-t-[100px]">
+      {/* ФИКС: Уверени сме, че тук няма неочакван маргин, който да избутва съдържанието */}
+      <section id="recipes" className="bg-[#2D3A27] text-[#F8F2ED] py-32 rounded-t-[100px] w-full">
         <div className="container mx-auto px-8">
           <div className="mb-24 text-center md:text-left">
             <span className="text-[#E8A87C] font-black uppercase tracking-[0.4em] text-[10px]">Culinarty</span>
-            {/* ФИКС НА ЦВЕТА: Добавено text-[#F8F2ED], за да не се слива с фона */}
             <h2 className="text-6xl italic mt-4 font-serif text-[#F8F2ED]">Botanical Recipes</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
@@ -300,7 +301,7 @@ export default function App() {
       </section>
 
       {/* Store Locator Section */}
-      <section id="locations" className="py-32 px-8 container mx-auto">
+      <section id="locations" className="py-32 px-8 container mx-auto overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <div>
             <h2 className="text-7xl font-bold italic mb-10 font-serif leading-tight">Find VELO <br/>near you.</h2>
@@ -432,7 +433,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <footer className="py-32 border-t border-black/5 bg-white/30">
+      <footer className="py-32 border-t border-black/5 bg-white/30 overflow-hidden">
         <div className="container mx-auto px-8">
            <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] font-bold uppercase tracking-[0.5em] opacity-30">
             <div className="flex gap-10">
