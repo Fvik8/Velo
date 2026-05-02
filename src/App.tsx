@@ -159,7 +159,6 @@ export default function App() {
   };
 
   return (
-    /* ФИКС: Добавено overflow-x-hidden тук, за да спрем бялата лента вдясно */
     <div className="bg-[#F8F2ED] text-[#2D3A27] font-sans selection:bg-[#E8A87C] selection:text-[#F8F2ED] overflow-x-hidden min-h-screen">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#2D3A27] z-[100] origin-left" style={{ scaleX }} />
 
@@ -198,7 +197,7 @@ export default function App() {
         <div className="grid lg:grid-cols-2 lg:items-center gap-24">
           <div className="max-w-xl">
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[#B5CFB7] font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">The Future of Froyo</motion.span>
-            <h1 className="text-6xl md:text-8xl font-bold leading-[0.9] mb-10">
+            <h1 className="text-5xl md:text-8xl font-bold leading-[0.9] mb-10">
               {"Guilt-free indulgence, plant-based soul.".split(" ").map((word, i) => (
                 <motion.span key={i} initial={{ y: 100 }} animate={{ y: 0 }} transition={{ delay: i * 0.1, duration: 0.8, ease: [0.19, 1, 0.22, 1] }} className="inline-block mr-4 italic last:font-normal last:not-italic">
                   {word}
@@ -232,7 +231,7 @@ export default function App() {
       <section id="shop" className="py-32 px-8 container mx-auto">
         <div className="mb-24 text-center">
             <span className="text-[10px] uppercase tracking-[0.4em] font-black opacity-30">Our Collection</span>
-            <h2 className="text-6xl italic mt-4 font-serif">Seasonal Swirls</h2>
+            <h2 className="text-5xl md:text-6xl italic mt-4 font-serif">Seasonal Swirls</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCTS.map(product => {
@@ -264,12 +263,11 @@ export default function App() {
       </section>
 
       {/* Recipes Section */}
-      {/* ФИКС: Уверени сме, че тук няма неочакван маргин, който да избутва съдържанието */}
-      <section id="recipes" className="bg-[#2D3A27] text-[#F8F2ED] py-32 rounded-t-[100px] w-full">
+      <section id="recipes" className="bg-[#2D3A27] text-[#F8F2ED] py-32 rounded-t-[100px] w-full overflow-hidden">
         <div className="container mx-auto px-8">
           <div className="mb-24 text-center md:text-left">
             <span className="text-[#E8A87C] font-black uppercase tracking-[0.4em] text-[10px]">Culinarty</span>
-            <h2 className="text-6xl italic mt-4 font-serif text-[#F8F2ED]">Botanical Recipes</h2>
+            <h2 className="text-5xl md:text-6xl italic mt-4 font-serif text-[#F8F2ED]">Botanical Recipes</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
             {RECIPES.map(recipe => (
@@ -303,15 +301,16 @@ export default function App() {
       {/* Store Locator Section */}
       <section id="locations" className="py-32 px-8 container mx-auto overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div>
-            <h2 className="text-7xl font-bold italic mb-10 font-serif leading-tight">Find VELO <br/>near you.</h2>
+          <div className="w-full">
+            {/* ФИКС: Адаптивен размер на шрифта (text-4xl на мобилни, text-7xl на десктоп) */}
+            <h2 className="text-4xl md:text-7xl font-bold italic mb-10 font-serif leading-tight break-words">Find VELO <br className="hidden md:block"/>near you.</h2>
             <p className="text-xl opacity-60 mb-12 max-w-md">Available in select high-end boutiques and artisanal food halls across the globe.</p>
-            <div className="flex gap-3 bg-white p-3 rounded-full border border-black/5 shadow-sm focus-within:shadow-md transition-all">
-              <input type="text" placeholder="Enter City or ZIP..." className="flex-grow bg-transparent px-6 outline-none font-bold placeholder:opacity-20" />
+            <div className="flex flex-col sm:flex-row gap-3 bg-white p-3 rounded-3xl sm:rounded-full border border-black/5 shadow-sm focus-within:shadow-md transition-all">
+              <input type="text" placeholder="Enter City or ZIP..." className="flex-grow bg-transparent px-6 py-4 sm:py-0 outline-none font-bold placeholder:opacity-20" />
               <button 
                 onClick={handleSearch}
                 disabled={searching}
-                className="bg-[#2D3A27] text-[#F8F2ED] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest disabled:opacity-50 cursor-pointer"
+                className="bg-[#2D3A27] text-[#F8F2ED] rounded-2xl sm:rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest disabled:opacity-50 cursor-pointer"
               >
                 {searching ? 'Searching...' : 'Search'}
               </button>
@@ -319,18 +318,18 @@ export default function App() {
             <div className="mt-16 space-y-10">
               {['Chelsea Market Garden, NY', 'Harrods Food Hall, London'].map((loc, i) => (
                 <div key={i} className="flex gap-6 items-center">
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center ${i === 0 ? 'bg-[#E8A87C]/20 text-[#E8A87C]' : 'bg-[#B5CFB7]/20 text-[#B5CFB7]'}`}>
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 ${i === 0 ? 'bg-[#E8A87C]/20 text-[#E8A87C]' : 'bg-[#B5CFB7]/20 text-[#B5CFB7]'}`}>
                     <Icons.MapPin />
                   </div>
-                  <div>
-                    <h4 className="text-2xl font-serif font-bold italic">{loc}</h4>
+                  <div className="min-w-0">
+                    <h4 className="text-xl md:text-2xl font-serif font-bold italic truncate break-words">{loc}</h4>
                     <p className="text-sm opacity-40 uppercase tracking-widest font-black">Open until 9:00 PM</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-[#B5CFB7]/10 aspect-[4/5] rounded-[80px] border border-black/5 p-4 overflow-hidden relative rotate-2">
+          <div className="bg-[#B5CFB7]/10 aspect-[4/5] rounded-[80px] border border-black/5 p-4 overflow-hidden relative md:rotate-2">
             <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover rounded-[60px] grayscale brightness-110 opacity-40" alt="Map" />
             <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 3 }} className="absolute top-1/4 left-1/3 w-6 h-6 bg-[#E8A87C] rounded-full shadow-[0_0_30px_rgba(232,168,124,0.8)] border-4 border-white" />
             <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 3, delay: 1 }} className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-[#B5CFB7] rounded-full shadow-[0_0_30px_rgba(181,207,183,0.8)] border-4 border-white" />
@@ -365,8 +364,8 @@ export default function App() {
                           alt={item.title} 
                         />
                       </div>
-                      <div className="flex-grow">
-                        <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
+                      <div className="flex-grow min-w-0">
+                        <h3 className="text-xl font-bold leading-tight truncate">{item.title}</h3>
                         <p className="text-[10px] uppercase font-black tracking-widest opacity-40 mb-3">{item.tagline}</p>
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-3 border border-black/10 px-3 py-1 rounded-full">
@@ -406,13 +405,13 @@ export default function App() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedRecipe(null)} className="fixed inset-0 bg-[#2D3A27]/60 backdrop-blur-md z-[300]" />
             <motion.div initial={{ opacity: 0, scale: 0.9, y: 30 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 30 }} className="fixed inset-6 lg:inset-auto lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-5xl lg:max-h-[90vh] bg-[#F8F2ED] rounded-[60px] z-[301] shadow-2xl overflow-hidden flex flex-col lg:flex-row">
               <button onClick={() => setSelectedRecipe(null)} className="absolute top-8 right-8 p-3 bg-white hover:bg-black/5 rounded-full z-10 transition-colors shadow-sm cursor-pointer"><Icons.X /></button>
-              <div className="lg:w-1/2 h-80 lg:h-auto relative overflow-hidden">
+              <div className="lg:w-1/2 h-64 lg:h-auto relative overflow-hidden flex-shrink-0">
                 <img src={selectedRecipe.image} className="w-full h-full object-cover grayscale-[20%]" alt={selectedRecipe.title} />
               </div>
-              <div className="lg:w-1/2 p-12 lg:p-20 overflow-y-auto">
+              <div className="lg:w-1/2 p-10 lg:p-20 overflow-y-auto">
                 <span className="text-[#B5CFB7] font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Crafted Combination</span>
-                <h2 className="text-4xl md:text-5xl font-bold italic mb-10 font-serif leading-tight">{selectedRecipe.title}</h2>
-                <div className="grid grid-cols-2 gap-12 mb-12">
+                <h2 className="text-3xl md:text-5xl font-bold italic mb-10 font-serif leading-tight">{selectedRecipe.title}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 mb-12">
                    <div>
                       <h4 className="text-[10px] uppercase font-black tracking-widest opacity-30 mb-6 underline underline-offset-8 decoration-[#E8A87C]">Ingredients</h4>
                       <ul className="space-y-3 font-medium text-sm">
@@ -433,15 +432,15 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <footer className="py-32 border-t border-black/5 bg-white/30 overflow-hidden">
+      <footer className="py-24 border-t border-black/5 bg-white/30 overflow-hidden">
         <div className="container mx-auto px-8">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] font-bold uppercase tracking-[0.5em] opacity-30">
+           <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] font-bold uppercase tracking-[0.5em] opacity-30 text-center md:text-left">
             <div className="flex gap-10">
               <a href="#" className="hover:opacity-100 transition-opacity">Instagram</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Pinterest</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Behance</a>
             </div>
-            <div className="text-center font-black">© 2026 Velo Botanicals. Cultivated Perfection.</div>
+            <div className="font-black">© 2026 Velo Botanicals. Cultivated Perfection.</div>
             <div className="flex gap-10">
               <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Ritual Terms</a>
