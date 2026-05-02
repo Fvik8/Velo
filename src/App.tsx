@@ -266,8 +266,9 @@ export default function App() {
       <section id="recipes" className="bg-[#2D3A27] text-[#F8F2ED] py-32 rounded-t-[100px]">
         <div className="container mx-auto px-8">
           <div className="mb-24 text-center md:text-left">
-            <span className="text-[#B5CFB7] font-black uppercase tracking-[0.4em] text-[10px]">Culinarty</span>
-            <h2 className="text-6xl italic mt-4 font-serif">Botanical Recipes</h2>
+            <span className="text-[#E8A87C] font-black uppercase tracking-[0.4em] text-[10px]">Culinarty</span>
+            {/* ФИКС НА ЦВЕТА: Добавено text-[#F8F2ED], за да не се слива с фона */}
+            <h2 className="text-6xl italic mt-4 font-serif text-[#F8F2ED]">Botanical Recipes</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
             {RECIPES.map(recipe => (
